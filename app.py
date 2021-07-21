@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 import requests
 
 
@@ -18,16 +18,7 @@ def get_chuck_image():
     api_url = 'https://api.chucknorris.io/jokes/categories'
     response = requests.get(api_url).json()
 
-    return response[0]
-
-@app.route('/category2',methods=['GET','POST'])
-def get_chuck_image2():
-    api_url = 'https://api.chucknorris.io/jokes/categories'
-    response = requests.get(api_url).json()
-
-    return response[1]
-
-
+    return jsonify(response)
 
 if __name__ == '__main__':
     app.run(debug=True)
