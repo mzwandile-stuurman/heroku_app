@@ -13,12 +13,12 @@ def get_chuck_norris_jokes():
 
     return  response
 
-@app.route('/image',methods=['GET','POST'])
+@app.route('/category',methods=['GET','POST'])
 def get_chuck_image():
-    api_url = 'https://api.chucknorris.io/jokes/random'
+    api_url = 'https://api.chucknorris.io/jokes/categories'
     response = requests.get(api_url).json()
 
-    return response['icon_url']
+    return response[0]
 
 if __name__ == '__main__':
     app.run(debug=True)
